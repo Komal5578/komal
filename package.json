@@ -12,8 +12,8 @@
   "dependencies": {
     "@fontsource-variable/playwrite-sk": "^5.2.7",
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
-    "@fortawesome/free-brands-svg-icons": "^7.0.0",
-    "@fortawesome/free-solid-svg-icons": "^7.0.0",
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^0.2.3",
     "aos": "^2.3.4",
     "framer-motion": "^12.23.26",
