@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function AboutMe() {
   return (
-    <section id="about" className="bg-transparent py-10 px-6 flex flex-col items-center">
+    <section id="about" className="bg-transparent py-12 px-10 md:px-16 flex flex-col items-center">
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ export default function AboutMe() {
         <motion.div 
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
-          className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-lg shadow-md transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600/25 hover:to-blue-500/25 hover:border-purple-400/40 hover:shadow-lg hover:shadow-purple-500/20"
+          className="bg-white/5 border border-white/10 backdrop-blur-md p-8 md:p-10 rounded-lg shadow-md transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600/25 hover:to-blue-500/25 hover:border-purple-400/40 hover:shadow-lg hover:shadow-purple-500/20"
         >
           <motion.p 
             initial={{ opacity: 0, x: -20 }}

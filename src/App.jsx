@@ -6,7 +6,7 @@ import Bgvideo from "./Bgvideo";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import TechStack from "./TechStack";
-import EducationTimeline from "./Education";
+import EducationTimeline from "./AboutMe";
 import Projects from "./Projects"
 import ContactMe from "./Contact"
 export default function App() {
