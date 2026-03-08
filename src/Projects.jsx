@@ -3,6 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import localStorageIcon from "./assets/localstorage.png";
 import {
   faHtml5,
   faCss3Alt,
@@ -12,7 +13,7 @@ import {
   faNodeJs,
   faGithub,
   faFigma,
-  faJava
+  faJava,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faDatabase,
@@ -20,7 +21,7 @@ import {
   faServer,
   faCode,
   faBolt,
-  faCloudSun
+  faCloudSun,
 } from "@fortawesome/free-solid-svg-icons";
 
 const techIcons = {
@@ -43,6 +44,8 @@ const techIcons = {
   Java: faJava,
   "Interactive Games": faJs,
   SQL: faDatabase,
+  "Local Storage": "localstorage.png",
+  LocalStorage: localStorageIcon,
 };
 
 const techColors = {
@@ -65,39 +68,41 @@ const techColors = {
   Java: "#ED8B00",
   "Interactive Games": "#f0db4f",
   SQL: "#00758F",
+  LocalStorage: "#fff",
 };
 
 const firstYearProjects = [
- 
   {
     name: "Wanderlust",
-    description: "A fullstack travel booking app with user auth and reviews.",
+    description: "A fullstack travel booking app which allows you to book different places , add destinations, user auth and reviews.",
     tech: ["MongoDB", "Express", "React", "Node.js"],
     image: "/wanderlust.jpg",
     link: "https://first-project-8vqu.onrender.com/",
-    repo: "https://github.com/komalskanojia/wanderlust",
+    repo: "https://github.com/Komal5578/First-Project",
   },
   {
     name: "LevelUpFi",
-    description: "A gamified learning platform where users learn finance through 6 interactive games.",
-    tech: ["React", "JavaScript", "Interactive Games"],
+    description:
+      "A gamified learning platform where users learn finance through 6 interactive games.",
+    tech: ["React", "JavaScript", "Firebase"],
     image: "/levelupfi.png",
     link: "https://levelup-hazel.vercel.app/",
-    repo: "https://github.com/Komal5578/levelupfi",
+    repo: "https://github.com/Komal5578/levelup",
   },
-   {
+  {
     name: "Portfolio Website",
     description: "Personal portfolio site to showcase projects and skills.",
     tech: ["React", "Tailwind", "Framer Motion"],
     image: "/portfolio.jpg",
     link: "https://komalskanojia.vercel.app/",
-    repo: "https://github.com/komalskanojia/portfolio",
+    repo: "https://github.com/Komal5578/komal",
   },
   {
     name: "Simon Says Game",
-    description: "A fun memory game that tests your pattern recognition skills.",
+    description:
+      "A fun memory game that tests your pattern recognition skills.",
     tech: ["HTML", "CSS", "JavaScript"],
-    image: "/simon.jpg", 
+    image: "/simon.jpg",
   },
   {
     name: "Spotify Clone",
@@ -108,13 +113,13 @@ const firstYearProjects = [
   {
     name: "Weather App",
     description: "Search any city and view real-time weather information.",
-    tech: ["Bootstrap", "OpenWeather API"],
+    tech: ["HTML","Bootstrap", "OpenWeather API"],
     image: "/weather.jpg",
   },
   {
     name: "To-Do App",
     description: "A simple and efficient to-do list with edit/delete features.",
-    tech: ["JavaScript", "Local Storage"],
+    tech: ["HTML","JavaScript", "LocalStorage"],
     image: "/todo.jpg",
   },
 ];
@@ -122,11 +127,11 @@ const firstYearProjects = [
 const secondYearProjects = [
   {
     name: "Everbloom",
-    description: "An ecommerce platform for handcrafted blooms with add to cart, buy now, and user authentication.",
+    description:
+      "An ecommerce platform for handcrafted blooms with add to cart, buy now, and user authentication.",
     tech: ["React", "Firebase", "Tailwind CSS"],
     image: "/everbloom.png",
     link: "https://ever-bloom-one.vercel.app/",
-    
   },
 ];
 
@@ -172,36 +177,55 @@ export default function Projects() {
             </span>
           )}
         </div>
-        <p className="text-sm text-gray-200 mb-3 line-clamp-2">{project.description}</p>
-        <div className="flex gap-2 text-sm text-white font-medium mt-auto">
-          {project.tech.map((t, i) => (
-            <span key={i} className="flex items-center justify-center w-10 h-10 rounded-full bg-black">
-              {techIcons[t] ? (
-                <FontAwesomeIcon icon={techIcons[t]} style={{ color: techColors[t] || "#fff", fontSize: "1.5rem" }} />
-              ) : t}
-            </span>
-          ))}
-        </div>
+        <p className="text-sm text-gray-200 mb-3 line-clamp-2">
+          {project.description}
+        </p>
+
         {project.link && (
-          <div className="flex gap-2 mt-2">
+          <div className="flex gap-2 mt-5">
             <button
-              className="bg-black/30 px-2 py-1 rounded-md whitespace-nowrap text-sm font-medium text-white cursor-pointer inline-block"
-              onClick={() => window.open(project.link, '_blank')}
-              style={{ transition: 'background 0.2s' }}
+              className="bg-black/30 px-2 py-1 rounded-md text-sm text-white"
+              onClick={() => window.open(project.link, "_blank")}
             >
               Live Demo
             </button>
+
             {project.repo && (
               <button
-                className="bg-black/30 px-2 py-1 rounded-md whitespace-nowrap text-sm font-medium text-white cursor-pointer inline-block"
-                onClick={() => window.open(project.repo, '_blank')}
-                style={{ transition: 'background 0.2s' }}
+                className="bg-black/30 px-2 py-1 rounded-md text-sm text-white"
+                onClick={() => window.open(project.repo, "_blank")}
               >
                 GitHub Repo
               </button>
             )}
           </div>
         )}
+
+        {/* Tech Icons ALWAYS visible */}
+        <div className="flex gap-2 text-sm text-white font-medium mt-3">
+          {project.tech.map((t, i) => (
+            <span
+                title={t}
+              key={i}
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-black"
+            >
+              {techIcons[t] && typeof techIcons[t] === "string" ? (
+                <img
+                  src={techIcons[t]}
+                  alt={t}
+                  style={{ width: "1.5rem", height: "1.5rem" }}
+                />
+              ) : techIcons[t] ? (
+                <FontAwesomeIcon
+                  icon={techIcons[t]}
+                  style={{ color: techColors[t] || "#fff", fontSize: "1.5rem" }}
+                />
+              ) : (
+                <span className="text-white text-sm">{t}</span>
+              )}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
