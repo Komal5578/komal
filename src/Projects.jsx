@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import localStorageIcon from "./assets/localstorage.png";
+
 import {
   faHtml5,
   faCss3Alt,
@@ -15,11 +16,11 @@ import {
   faFigma,
   faJava,
 } from "@fortawesome/free-brands-svg-icons";
+
 import {
   faDatabase,
   faFire,
   faServer,
-  faCode,
   faBolt,
   faCloudSun,
 } from "@fortawesome/free-solid-svg-icons";
@@ -42,7 +43,6 @@ const techIcons = {
   Github: faGithub,
   Figma: faFigma,
   Java: faJava,
-  "Interactive Games": faJs,
   SQL: faDatabase,
   "Local Storage": "localstorage.png",
   LocalStorage: localStorageIcon,
@@ -66,7 +66,6 @@ const techColors = {
   Github: "#fff",
   Figma: "#F24E1E",
   Java: "#ED8B00",
-  "Interactive Games": "#f0db4f",
   SQL: "#00758F",
   LocalStorage: "#fff",
 };
@@ -74,7 +73,8 @@ const techColors = {
 const firstYearProjects = [
   {
     name: "Wanderlust",
-    description: "A fullstack travel booking app which allows you to book different places , add destinations, user auth and reviews.",
+    description:
+      "A fullstack travel booking app which allows you to book different places , add destinations, user auth and reviews.",
     tech: ["MongoDB", "Express", "React", "Node.js"],
     image: "/wanderlust.jpg",
     link: "https://first-project-8vqu.onrender.com/",
@@ -113,13 +113,13 @@ const firstYearProjects = [
   {
     name: "Weather App",
     description: "Search any city and view real-time weather information.",
-    tech: ["HTML","Bootstrap", "OpenWeather API"],
+    tech: ["HTML", "Bootstrap", "OpenWeather API"],
     image: "/weather.jpg",
   },
   {
     name: "To-Do App",
     description: "A simple and efficient to-do list with edit/delete features.",
-    tech: ["HTML","JavaScript", "LocalStorage"],
+    tech: ["HTML", "JavaScript", "LocalStorage"],
     image: "/todo.jpg",
   },
 ];
@@ -145,7 +145,8 @@ export default function Projects() {
 
   const scroll = (ref, direction) => {
     if (ref.current) {
-      const scrollAmount = 350;
+      const scrollAmount = window.innerWidth < 640 ? 260 : 350;
+
       ref.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -157,7 +158,7 @@ export default function Projects() {
     <div
       key={index}
       data-aos="fade-up"
-      className={`bg-gradient-to-br from-purple-800 to-blue-700 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 h-[420px] flex flex-col ${
+      className={`bg-gradient-to-br from-purple-800 to-blue-700 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 h-[380px] sm:h-[420px] flex flex-col ${
         project.link ? "cursor-pointer" : ""
       }`}
       onClick={() => project.link && window.open(project.link, "_blank")}
@@ -165,11 +166,13 @@ export default function Projects() {
       <img
         src={project.image}
         alt={project.name}
-        className="w-full h-48 object-cover flex-shrink-0"
+        className="w-full h-40 sm:h-48 object-cover flex-shrink-0"
       />
+
       <div className="p-5 flex flex-col flex-grow overflow-hidden">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-xl font-semibold">{project.name}</h3>
+          <h3 className="text-lg sm:text-xl font-semibold">{project.name}</h3>
+
           {project.link && (
             <span className="flex items-center text-green-400 text-xs font-bold flex-shrink-0">
               <span className="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span>
@@ -177,6 +180,7 @@ export default function Projects() {
             </span>
           )}
         </div>
+
         <p className="text-sm text-gray-200 mb-3 line-clamp-2">
           {project.description}
         </p>
@@ -201,27 +205,29 @@ export default function Projects() {
           </div>
         )}
 
-        {/* Tech Icons ALWAYS visible */}
-        <div className="flex gap-2 text-sm text-white font-medium mt-3">
+        <div className="flex gap-2 text-sm text-white font-medium mt-3 flex-wrap">
           {project.tech.map((t, i) => (
             <span
-                title={t}
+              title={t}
               key={i}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-black"
+              className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black"
             >
               {techIcons[t] && typeof techIcons[t] === "string" ? (
                 <img
                   src={techIcons[t]}
                   alt={t}
-                  style={{ width: "1.5rem", height: "1.5rem" }}
+                  style={{ width: "1.4rem", height: "1.4rem" }}
                 />
               ) : techIcons[t] ? (
                 <FontAwesomeIcon
                   icon={techIcons[t]}
-                  style={{ color: techColors[t] || "#fff", fontSize: "1.5rem" }}
+                  style={{
+                    color: techColors[t] || "#fff",
+                    fontSize: "1.4rem",
+                  }}
                 />
               ) : (
-                <span className="text-white text-sm">{t}</span>
+                <span className="text-white text-xs">{t}</span>
               )}
             </span>
           ))}
@@ -231,51 +237,59 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="py-16 px-6 bg-transparent text-white">
+    <section id="projects" className="py-12 sm:py-16 px-4 sm:px-6 bg-transparent text-white">
       <div className="text-center mb-12">
-        <h2 className="text-6xl font-bold">
-          My <span className="text-blue-500 font-bold text-6xl">Projects</span>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+          My{" "}
+          <span className="text-blue-500 font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+            Projects
+          </span>
         </h2>
+
         <p className="text-gray-400 mt-2">Here are a few of my recent works</p>
       </div>
 
-      {/* First Year Section */}
+      {/* First Year */}
       <div className="mb-16">
-        <h3 className="text-3xl font-bold text-center mb-8">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8">
           <span className="text-blue-400">First Year</span>
         </h3>
+
         <div className="relative flex items-center justify-center">
           <button
             onClick={() => scroll(firstYearRef, "left")}
-            className="absolute left-0 z-10 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all"
+            className="hidden sm:block absolute left-0 z-10 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all"
           >
             <FaChevronLeft />
           </button>
+
           <div
             ref={firstYearRef}
             className="flex gap-6 overflow-x-auto scroll-smooth px-12 py-4 scrollbar-hide items-start"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {firstYearProjects.map((project, index) => (
-              <div key={index} className="flex-shrink-0 w-80">
+              <div key={index} className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-80">
                 <ProjectCard project={project} index={index} />
               </div>
             ))}
           </div>
+
           <button
             onClick={() => scroll(firstYearRef, "right")}
-            className="absolute right-0 z-10 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all"
+            className="hidden sm:block absolute right-0 z-10 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all"
           >
             <FaChevronRight />
           </button>
         </div>
       </div>
 
-      {/* Second Year Section */}
+      {/* Second Year */}
       <div>
-        <h3 className="text-3xl font-bold text-center mb-8">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8">
           <span className="text-blue-400">Second Year</span>
         </h3>
+
         <div className="relative flex items-center justify-center">
           <button
             onClick={() => scroll(secondYearRef, "left")}
@@ -283,17 +297,19 @@ export default function Projects() {
           >
             <FaChevronLeft />
           </button>
+
           <div
             ref={secondYearRef}
             className="flex gap-6 overflow-x-auto scroll-smooth px-12 py-4 scrollbar-hide items-start"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {secondYearProjects.map((project, index) => (
-              <div key={index} className="flex-shrink-0 w-80">
+              <div key={index} className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-80">
                 <ProjectCard project={project} index={index} />
               </div>
             ))}
           </div>
+
           <button
             onClick={() => scroll(secondYearRef, "right")}
             className="absolute right-0 z-10 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all"
