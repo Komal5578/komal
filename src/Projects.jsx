@@ -133,6 +133,19 @@ const secondYearProjects = [
     image: "/everbloom.png",
     link: "https://ever-bloom-one.vercel.app/",
   },
+  {
+    name: "Nourish Net",
+    description:
+      "A management system designed for tiffin delivery service providers. Built during a hackathon, it streamlines order management, route optimization, menu planning, and customer relationships in one unified platform.",
+    tech: [
+      { name: "TypeScript", icon: "fab fa-typescript" },
+      "Node.js",
+      "React",
+      "MongoDB",
+    ],
+    image: "/nourishnet.png",
+    link: "https://nourish-net-swart.vercel.app/", // Update with the actual project link if available
+  },
 ];
 
 export default function Projects() {
