@@ -15,7 +15,22 @@ export default function Navbar() {
   }, []);
 
   const linkClasses = "text-lg font-semibold cursor-pointer hover:text-purple-300";
-  const handleNavClick = () => setOpen(false);
+  const handleNavClick = (e) => {
+    e.preventDefault();
+    const targetId = e.target.getAttribute("href").slice(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const offsetTop = targetElement.offsetTop;
+      const navbarHeight = document.querySelector("nav").offsetHeight;
+      window.scrollTo({
+        top: offsetTop - navbarHeight / 20, // Adjust for navbar height to center the section
+        behavior: "smooth",
+      });
+    }
+
+    setOpen(false);
+  };
 
   return (
     <>
@@ -47,7 +62,7 @@ export default function Navbar() {
             <a href="#home" className={linkClasses} onClick={handleNavClick}>
               Home
             </a>
-            <a href="#education" className={linkClasses} onClick={handleNavClick}>
+            <a href="#about" className={linkClasses} onClick={handleNavClick}>
               Education
             </a>
             <a href="#techstack" className={linkClasses} onClick={handleNavClick}>
