@@ -15,6 +15,7 @@ import {
   faGithub,
   faFigma,
   faJava,
+  faTypescript
 } from "@fortawesome/free-brands-svg-icons";
 
 import {
@@ -46,6 +47,8 @@ const techIcons = {
   SQL: faDatabase,
   "Local Storage": "localstorage.png",
   LocalStorage: localStorageIcon,
+  TypeScript :faTypescript,
+  
 };
 
 const techColors = {
@@ -68,6 +71,7 @@ const techColors = {
   Java: "#ED8B00",
   SQL: "#00758F",
   LocalStorage: "#fff",
+  TypeScript: "#3178C6",
 };
 
 const firstYearProjects = [
@@ -136,15 +140,11 @@ const secondYearProjects = [
   {
     name: "Nourish Net",
     description:
-      "A management system designed for tiffin delivery service providers. Built during a hackathon, it streamlines order management, route optimization, menu planning, and customer relationships in one unified platform.",
-    tech: [
-      { name: "TypeScript", icon: "fab fa-typescript" },
-      "Node.js",
-      "React",
-      "MongoDB",
-    ],
+      "A management system designed for tiffin delivery service providers. It streamlines order management, route optimization, menu planning, and customer relationships in one unified platform.",
+    tech: ["TypeScript", "Node.js", "React", "MongoDB"],
     image: "/nourishnet.png",
     link: "https://nourish-net-swart.vercel.app/", // Update with the actual project link if available
+    repo: "https://github.com/Komal5578/NourishNet",
   },
 ];
 
