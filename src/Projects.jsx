@@ -146,6 +146,16 @@ const secondYearProjects = [
     link: "https://nourish-net-swart.vercel.app/", // Update with the actual project link if available
     repo: "https://github.com/Komal5578/NourishNet",
   },
+  {
+    name: "HealthMirror",
+    description:
+      "An AI-powered digital twin platform featuring a chat-based health coach, timeline simulator (1, 5, 10 years), and dynamic avatar modeling to project personalized health outcomes.",
+    tech: ["AI", "Node.js", "React", "MongoDB"],
+    image: "/healthmirror.png",
+    link: "https://health-mirror-nine.vercel.app/", // Update with the actual project link if available
+    repo: "https://github.com/Komal5578/HealthMirror",
+  },
+  
 ];
 
 export default function Projects() {
