@@ -56,7 +56,7 @@ export default function TechStack() {
   // Second row - scrolls right (opposite)
   const techsRow2 = [
     { name: "Express.js", icon: faServer, color: "#fff" },
-    { name: "Figma", icon: faFigma, color: "#F24E1E" },
+ 
     { name: "Framer Motion", icon: faBolt, color: "#FF0080" },
     { name: "Java", icon: faJava, color: "#ED8B00" },
     { name: "C++", icon: faCode, color: "#00599C" },
